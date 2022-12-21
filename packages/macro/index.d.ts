@@ -165,7 +165,7 @@ export function select(value: string, choices: ChoiceOptions): string
  *
  * @param descriptor The message descriptor
  */
-export function defineMessage(descriptor: MessageDescriptor): MessageDescriptor
+export function defineMessage(descriptor: MessageDescriptor | string): MessageDescriptor
 
 export type TransProps = {
   id?: string

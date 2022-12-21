@@ -177,7 +177,7 @@ declare module "@lingui/macro" {
    * @param descriptor The message descriptor
    */
   export function defineMessage(
-    descriptor: MessageDescriptor
+    descriptor: MessageDescriptor | string
   ): MessageDescriptor
 
   export type ChoiceProps = {
