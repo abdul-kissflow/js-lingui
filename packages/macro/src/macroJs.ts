@@ -165,8 +165,8 @@ export default class MacroJs {
   }
 
   /**
-   * macro `defineMessage` is called with MessageDescriptor. The only
-   * thing that happens is that any macros used in `message` property
+   * macro `defineMessage` is called with MessageDescriptor or string. The only
+   * thing that happens is that any macros used in `message` property or string
    * are replaced with formatted message.
    *
    * import { defineMessage, plural } from '@lingui/macro';
@@ -183,13 +183,30 @@ export default class MacroJs {
    *   comment: "Description",
    *   message: "{value, plural, one {book} other {books}}"
    * }
+   * 
+   * or 
+   * 
+   * const message = defineMessage("initiate success")
+   *
+   * ↓ ↓ ↓ ↓ ↓ ↓
+   *
+   * const message = {
+   *   id: "initiate success"
+   * }
    *
    */
   replaceDefineMessage = (path) => {
     // reset the expression counter
     this._expressionIndex = makeCounter()
 
-    const descriptor = this.processDescriptor(path.node.arguments[0])
+    const argValue = path.node.arguments[0]
+    const newNode = (this.types.isTemplateLiteral(argValue)  || this.types.isStringLiteral(argValue)) ?
+      this.types.objectExpression([
+      this.types.objectProperty(
+        this.types.identifier(MESSAGE),
+        argValue
+      )]) : argValue
+    const descriptor = this.processDescriptor(newNode)
     path.replaceWith(descriptor)
   }
 
