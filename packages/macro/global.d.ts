@@ -173,11 +173,17 @@ declare module "@lingui/macro" {
    *    message: `Welcome, ${name}!`,
    * });
    * ```
+   * 
+   * or
+   * 
+   * ```
+   * const message = defineMessage("Welcome, home!");
+   * ```
    *
-   * @param descriptor The message descriptor
+   * @param descriptor The message descriptor or string
    */
   export function defineMessage(
-    descriptor: MessageDescriptor
+    descriptor: MessageDescriptor | string
   ): MessageDescriptor
 
   export type ChoiceProps = {
