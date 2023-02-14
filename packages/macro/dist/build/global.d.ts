@@ -170,9 +170,9 @@ declare module "@lingui/macro" {
    *    comment: "Greetings on the welcome page",
    *    message: `Welcome, ${name}!`,
    * });
-   *
+   * 
    * or
-   *
+   * 
    * ```
    * const message = defineMessage("Welcome, home!");
    * ```

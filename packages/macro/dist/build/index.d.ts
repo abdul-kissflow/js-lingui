@@ -159,18 +159,16 @@ export function select(value: string, choices: ChoiceOptions): string
  *    comment: "Greetings on the welcome page",
  *    message: `Welcome, ${name}!`,
  * });
- *
+ * 
  * or
- *
+ * 
  * ```
  * const message = defineMessage("Welcome, home!");
  * ```
  *
  * @param descriptor The message descriptor or string
  */
-export function defineMessage(
-  descriptor: MessageDescriptor | string
-): MessageDescriptor
+export function defineMessage(descriptor: MessageDescriptor | string): MessageDescriptor
 
 export type TransProps = {
   id?: string
