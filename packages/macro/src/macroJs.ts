@@ -102,12 +102,11 @@ export default class MacroJs {
       this.isDefineMessage(path.node.tag)
     ) {
       const tokens = this.tokenizeTemplateLiteral(path.node.quasi)
-      const descriptor = this.createMessageDescriptorFromTokens(
-        tokens,
-        path.node.loc
-      )
-
-      path.replaceWith(descriptor)
+      const { message } = buildICUFromTokens(tokens)
+      let msgNode = this.types.stringLiteral(message)
+      msgNode.loc = path.node.loc
+      this.types.addComment(msgNode, "leading", EXTRACT_MARK)
+      path.replaceWith(msgNode)
       return false
     }
 

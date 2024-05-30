@@ -208,7 +208,7 @@ export function defineMessage(
 export function defineMessage(
   literals: TemplateStringsArray,
   ...placeholders: any[]
-): MessageDescriptor
+): string
 
 /**
  * Define a message for later use
